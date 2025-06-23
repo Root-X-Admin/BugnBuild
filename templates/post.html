@@ -10,7 +10,7 @@
 </div>
 
 
-<p><small>Posted on: {{ post.timestamp.strftime('%Y-%m-%d %H:%M') }}</small></p>
+<p><small>Posted on: {{ post.timestamp|localtime }}</small></p>
 <hr>
 
 <h3>~/bugnblog/posts/{{ post.id }}$ ls -al comments</h3>
@@ -22,7 +22,7 @@
                 <strong>{{ comment.user.username }}</strong>:
                 {{ comment.content }}
                 <br>
-                <small>{{ comment.timestamp.strftime('%Y-%m-%d %H:%M') }}</small>
+                <small>Commented on: {{ comment.timestamp|localtime }}</small>
             </li>
             <hr>
         {% endfor %}

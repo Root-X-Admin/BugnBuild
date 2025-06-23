@@ -8,6 +8,18 @@ from markupsafe import Markup
 app = Flask(__name__)
 app.config.from_object(Config)
 
+from datetime import datetime
+import pytz  # or use zoneinfo if using Python 3.9+
+
+@app.template_filter('localtime')
+def localtime_filter(value, timezone='Asia/Kolkata'):
+    if value is None:
+        return ''
+    utc = pytz.utc
+    local_tz = pytz.timezone(timezone)
+    return value.replace(tzinfo=utc).astimezone(local_tz).strftime('%Y-%m-%d %I:%M %p')
+
+
 db.init_app(app)
 
 login_manager = LoginManager()
