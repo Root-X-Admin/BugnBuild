@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ post.title }} - BugnBuild Terminal Blog{% endblock %}
+
+{% block content %}
+<h2>~/bugnblog/posts/{{ post.id }}$ cat "{{ post.title }}"</h2>
+
+<div class="markdown-content">
+    {{ post.content | markdown }}
+</div>
+
+
+<p><small>Posted on: {{ post.timestamp.strftime('%Y-%m-%d %H:%M') }}</small></p>
+<hr>
+
+<h3>~/bugnblog/posts/{{ post.id }}$ ls -al comments</h3>
+
+{% if comments %}
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <strong>{{ comment.user.username }}</strong>:
+                {{ comment.content }}
+                <br>
+                <small>{{ comment.timestamp.strftime('%Y-%m-%d %H:%M') }}</small>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No comments yet.</p>
+{% endif %}
+
+{% if current_user.is_authenticated %}
+    <h3>~/bugnblog/posts/{{ post.id }}$ echo "your thoughts" >> comments</h3>
+    <form method="POST" action="{{ url_for('post', post_id=post.id) }}">
+        <textarea name="comment" rows="4" placeholder="Type your comment here..." required></textarea>
+        <button type="submit">Post Comment</button>
+    </form>
+{% else %}
+    <p><a href="{{ url_for('login') }}">Login</a> to comment on this post.</p>
+{% endif %}
+{% endblock %}

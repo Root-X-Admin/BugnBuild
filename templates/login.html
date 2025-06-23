@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %}Login - BugnBuild Terminal Blog{% endblock %}
+
+{% block content %}
+<h2>~/bugnblog$ login</h2>
+
+<form method="POST" action="{{ url_for('login') }}">
+    <label for="email">Email:</label>
+    <input type="email" name="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" required>
+
+    <button type="submit">Login</button>
+</form>
+
+<p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+{% endblock %}

@@ -1,0 +1,16 @@
+Flask==2.3.3
+Flask-SQLAlchemy==3.1.1
+Flask-Login==0.6.3
+Flask-WTF==1.1.1
+email-validator==2.1.0.post1
+WTForms==3.1.2
+Werkzeug==2.3.7
+# gunicorn==21.2.0  # for deployment (Render or Railway)
+markdown2==2.4.13  # optional: for rendering markdown in blog posts
+python-dotenv==1.0.1
+psycopg2-binary==2.9.9
+flask 
+flask_sqlalchemy 
+flask_bcrypt 
+flask_login
+markdown
