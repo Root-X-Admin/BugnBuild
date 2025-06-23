@@ -8,7 +8,7 @@ Werkzeug==2.3.7
 gunicorn==21.2.0  # for deployment (Render or Railway)
 markdown2==2.4.13  # optional: for rendering markdown in blog posts
 python-dotenv==1.0.1
-psycopg2-binary==2.9.9
+psycopg2-binary
 flask 
 flask_sqlalchemy 
 flask_bcrypt 
